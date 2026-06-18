@@ -12,3 +12,7 @@ alias zshconf="chezmoi edit ~/.zshrc && chezmoi apply"
 alias starshipconf="chezmoi edit $STARSHIP_CONFIG && chezmoi apply"
 
 alias gitconf="chezmoi edit ~/.gitconfig && chezmoi apply"
+
+alias myip='curl -s ifconfig.me'
+
+alias claude-key='export ANTHROPIC_API_KEY=$(op read op://Employee/anthropic-api-key/credential)'

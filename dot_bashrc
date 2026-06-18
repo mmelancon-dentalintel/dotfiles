@@ -18,8 +18,7 @@ eval "$(starship init bash)"
 export EDITOR=nvim
 # bash parameter completion for the dotnet CLI
 
-function _dotnet_bash_complete()
-{
+function _dotnet_bash_complete() {
   local cur="${COMP_WORDS[COMP_CWORD]}" IFS=$'\n' # On Windows you may need to use use IFS=$'\r\n'
   local candidates
 
@@ -31,3 +30,9 @@ function _dotnet_bash_complete()
 complete -f -F _dotnet_bash_complete dotnet
 
 echo $SHELL
+
+alias myip='curl -s ifconfig.me'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
