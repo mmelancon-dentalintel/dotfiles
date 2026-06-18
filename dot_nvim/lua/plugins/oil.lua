@@ -1,3 +1,8 @@
+-- this customization isn't needed for now
+if true then
+  return {}
+end
+
 return {
   "stevearc/oil.nvim",
   dependencies = "echasnovski/mini.icons",

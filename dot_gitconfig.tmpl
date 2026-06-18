@@ -1,15 +1,15 @@
 # This is Git's per-user configuration file.
 [user]
-	email = michaelmelancon@gmail.com
+	email = mmelancon@dentalintel.com
 	name = Michael Melancon
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILtiWQm7S4TG0wVg1C+UFsd8MCS+oz0yoo3XmNvv35q+
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJZG0VKYLDS3l5qr7+6y6kpNHEx1OVsatarlQMJMePqh
 [gpg]
 	format = ssh
 	program = gpg
 [commit]
 	gpgsign = true
 [tag]
-	forceSignAnnotated = false
+	forceSignAnnotated = true
 [fetch]
 	prune = true
 [init]
@@ -19,32 +19,49 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[http]
-	sslbackend = openssl
-{{ if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+
+{{- if eq .chezmoi.os "linux" }}
+
+{{- if .chezmoi.kernel.osrelease | lower | contains "microsoft" }}
+
 [credential]
 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 [gpg "ssh"]
 	program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl"
-{{ else }}
+
+{{- else }}
+
+[credential]
+	helper = git-credential-manager
+[gpg "ssh"]
+    program = /opt/1Password/op-ssh-sign
+
+{{- end }}
+
+{{- else }}
+
 [credential]
 	helper = git-credential-manager
 [gpg "ssh"]
 	program = C:\\Program Files\\1Password\\app\\8\\op-ssh-sign.exe
-	allowedSignersFile = 
+	allowedSignersFile =
+
 {{ end }}
+
 [credential "https://dev.azure.com"]
-	usehttppath = true
+	useHttpPath = true
 [core]
-	longpaths = true
+	longPaths = true
+
 {{ if (eq .chezmoi.os "windows") }}
-	filemode = false
+	fileMode = false
 {{ end }}
+
 [push]
 	autoSetupRemote = true
 [pull]
 	rebase = true
 [rebase]
 	autoStash = true
-	autosquash = false
+	autoSquash = false
 	updateRefs = false

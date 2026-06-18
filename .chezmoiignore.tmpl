@@ -7,6 +7,11 @@
 .config/zsh
 .config/sway
 .local/
+{{- else if .chezmoi.kernel.osrelease | lower | contains "microsoft" }}
+.config/sway
+.local/bin/clipboard-to-windows
+.local/bin/start-sway
+.local/bin/win-to-clipboard
 {{- else }}
 OneDrive
 Documents
