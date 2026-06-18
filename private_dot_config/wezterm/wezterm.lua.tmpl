@@ -4,16 +4,16 @@ local config = {
 	default_prog = { "pwsh" },
   {{- end -}}
 	adjust_window_size_when_changing_font_size = true,
-	hide_tab_bar_if_only_one_tab = fale,
+	hide_tab_bar_if_only_one_tab = false,
 	inactive_pane_hsb = {
 		saturation = 0.8,
 		brightness = 0.7,
 	},
   color_scheme = 'OneHalfDark',
   font_size = 14.0,
-  font = wezterm.font('JetBrainsMono NF')
-  initial_cols = 160,
-  initial_rows = 56,
+  font = wezterm.font('JetBrainsMono NF'),
+  initial_cols = 140,
+  initial_rows = 40
 }
 
 return config
