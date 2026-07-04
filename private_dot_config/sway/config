@@ -27,8 +27,6 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-# Load environment variables
-exec_always source ~/.config/sway/environment.sh
 
 #
 # Workspaces:
@@ -120,8 +118,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start mako notification daemon
-exec mako
 
 # Include modular configurations
 include ~/.config/sway/config.d/*
